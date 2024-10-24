@@ -27,7 +27,7 @@ table {
 .containerDivs{
     width: 100vw;
     height: 75vh;
-
+background-color: #e3e3e3;
     display: flex;
 }
 
@@ -60,6 +60,7 @@ table {
     min-height: 300px;
     border:1px solid grey;
     border-radius: 20px;
+    background-color: white;
 }
 
 .containerTableTransfer{
@@ -69,8 +70,9 @@ table {
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    padding: 20px
-    ;
+    padding: 20px;
+    margin-top: 10px;
+    background-color: white;
 }
 
 .inputRegister{
