@@ -128,14 +128,6 @@ export class DialogAnimationsExampleDialog {
   constructor(private authService: AuthService) { }
 
 
-  body = {
-    email: this.valueEmailRegister,
-    password: this.valueSenha,
-    account_type: "standard",
-    name: this.valueNome,
-    registration: this.valueCpf || this.valueCnpj
-  }
-
 
   errorAlert(errorStatus: number) {
     this.errorStatus = errorStatus
@@ -152,12 +144,22 @@ export class DialogAnimationsExampleDialog {
   }
 
   sendForm() {
+    const body = {
+      email: this.valueEmailRegister,
+      password: this.valueSenha,
+      account_type: "standard",
+      name: this.valueNome,
+      registration: this.valueCpf
+    }
+  
+    console.log(this.valueConfirmarSenha,this.valueCpf,this.valueEmailRegister,this.valueNome,this.valueSenha)
     if (this.valueConfirmarSenha != this.valueSenha) {
       window.alert('Senhas divergentes')
-    } else if (!this.valueCnpj || !this.valueEmailRegister || !this.valueSenha) {
+    } else if (!this.valueEmailRegister || !this.valueSenha) {
       window.alert('Complete os campos')
     } else {
-      this.authService.SingUp(this.body).then(sucess => this.openSnackBar()).catch(error => this.errorAlert(error.status))
+      console.log(body)
+      this.authService.SingUp(body).then(sucess => this.openSnackBar()).catch(error => console.log(error))
     }
 
   }
