@@ -1,0 +1,39 @@
+@if(register){
+  <a routerLink="/dashboard" routerLinkActive="active" ariaCurrentWhenActive="page" class="textModal">Abra sua conta no seaPay</a>
+}
+<mat-dialog-content >
+  <mat-tab-group>
+    <mat-tab label="Pessoa Física">
+      <div class="containerRegister">
+        <a class="titilesRegister">Email*</a>
+        <input class="inputRegister" placeholder="Digite seu email">
+
+        <a class="titilesRegister">Senha*</a>
+        <input placeholder="Sua senha..." class="inputRegister">
+
+        <a class="titilesRegister">Confirmar Senha*</a>
+        <input placeholder="Confirme sua senha..." class="inputRegister">
+
+        <span style="margin-top: 7px;"><input type="checkbox">Conta para lojista</span>
+
+        <a class="textLower">*Contas para lojistas não são aptas a realizar transferências, apenas receber</a>
+
+        <a class="titilesRegister">Nome Completo*</a>
+        <input class="inputRegister" placeholder="Seu nome">
+
+        <a class="titilesRegister">CPF*</a>
+        <input class="inputRegister" placeholder="XX.XXX.XXX-XX">
+      </div>
+    </mat-tab>
+    <mat-tab label="Pessoa Jurídica"> Pessoa Jurídica </mat-tab>
+
+  </mat-tab-group>
+</mat-dialog-content>
+<mat-dialog-actions class="bottomContainerRegister" > 
+ 
+<section >
+    <button  (click)="sendForm()"  mat-flat-button>Enviar</button>
+</section>
+
+</mat-dialog-actions>
+

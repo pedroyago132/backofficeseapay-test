@@ -1,0 +1,152 @@
+mat-grid-tile {
+    height: 100vh;
+
+}
+
+mat-grid-list {
+    padding: 0;
+    margin: 0 auto;
+    overflow-x: hidden;
+    height: 100vh;
+    width: 100%;
+}
+
+.containerCheckBox{
+   display: flex;
+   align-items: flex-start;
+   justify-content: flex-start;
+   background-color: aqua;
+}
+
+.containerRegister{
+    height: 100%;
+    width: 100%;
+    flex-direction:column;
+    display: flex;
+}
+
+.inputRegister{
+    border: 1px solid gray;
+    background-color: white;
+    width: 70%;
+    height: 30px;
+    margin-left: 5px;
+    outline: 1px solid grey;
+    border-radius: 5px;
+}
+
+.textLower{
+    font-size: 12px;
+    font-family: 'inter-Light';
+    margin:5px;
+    font-weight: bold;
+}
+
+a{
+    font-size: 15px;
+    font-family: 'inter';
+    margin:5px;
+    font-weight: bold;
+}
+.textModal{
+    font-weight: bold;
+    font-size: 8px auto;
+    font-family: 'inter-Light';
+}
+
+.contaienrLogin {
+    width: 400px;
+    height: 200px;
+    display: flex;
+    gap: 7;
+}
+
+
+a {
+    font-family: 'inter-Light';
+    font-weight: bold;
+    margin-top: 20px 0px 15px;
+    display: flex;
+}
+
+p {
+    font-weight: bold;
+    font-size: 24px auto;
+    font-family: 'inter-Light';
+    margin: 35px 0px 35px;
+    margin-left: 10px;
+}
+
+p:hover{
+    color: blue;
+    cursor: pointer;
+}
+
+.example-form-field {
+    width: 400px;
+    font-size: 12px;
+    border: hidden;
+}
+
+.example-form-field:focus {
+    width: 400px;
+    font-size: 12px;
+    border: hidden;
+    border-color: #007bff;
+}
+
+.example-form-field::placeholder {
+    font-size: 12px;
+}
+
+.containerTextRegister {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+}
+
+.titleRegister{
+    font-family: 'inter';
+    font-weight: bold;
+    font-size: 14px;
+}
+
+section {
+    display: table;
+  }
+  
+  .example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 120px;
+  }
+  
+  .example-button-row {
+    display: table-cell;
+    max-width: 600px;
+  }
+  
+  .example-button-row .mat-mdc-button-base {
+    margin: 8px 8px 8px 0;
+  }
+  
+  .example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
+
+  .bottomContainerRegister{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
