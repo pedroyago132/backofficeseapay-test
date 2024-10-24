@@ -3,15 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { baseUrl } from '../Global/global';
 import { User,LoginEnum } from '../models';
-import axios,{AxiosResponse} from 'axios'
+import axios,{AxiosResponse, AxiosHeaders} from 'axios'
+
+const axiosInstance = axios.create({});
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
   constructor(private http: HttpClient) { }
-
+ 
  
     async SingUp(body:User): Promise<any> {
       try {
@@ -26,8 +27,9 @@ export class AuthService {
 
     async SingIn(body:LoginEnum): Promise<any> {
       try {
+   
         const response: AxiosResponse<any> = await axios.post(`${baseUrl}/auth/signin`,body);
-        console.log('Login successful', response)
+        console.log('Login successful', response.headers.getAuthorization)
         return response.data;
        
       } catch (error) {

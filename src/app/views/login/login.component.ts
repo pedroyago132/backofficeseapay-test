@@ -14,11 +14,18 @@ import {
   MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 import { AuthService } from '../../service/auth.service'
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
 import { User } from '../../models';
-import { RouterOutlet, Router} from '@angular/router';
+import { RouterOutlet, Router } from '@angular/router';
+import {
+  MatSnackBar,
+  MatSnackBarAction,
+  MatSnackBarActions,
+  MatSnackBarLabel,
+  MatSnackBarRef,
+} from '@angular/material/snack-bar';
 
 
 // Inputs importados de Angular - Material https://material.angular.io/components/input/examples
@@ -51,20 +58,20 @@ export class LoginComponent {
 
   valueSenha = 'Digite sua senha';
 
-  errorStatus:number = 0
+  errorStatus: number = 0
 
   userLogin = {
-    login:'123.000.000-00',
-    password:'senha123'
+    login: '123.000.000-00',
+    password: 'senha123'
   }
 
 
-  constructor(private authService:AuthService,private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
   readonly dialog = inject(MatDialog);
 
-  errorAlert(errorStatus:number){
+  errorAlert(errorStatus: number) {
     this.errorStatus = errorStatus
-    if(this.errorStatus == 400){
+    if (this.errorStatus == 400) {
       window.alert('Usuário já cadastrado')
     }
   }
@@ -77,14 +84,14 @@ export class LoginComponent {
     });
   }
 
-  sucessFunction(){
-    this.router.navigate(['/dashboard']);
+  sucessFunction(sucess: any) {
+    console.log(sucess, 'sucesso')
   }
 
-  signin(){
-    console.log(this.valueLogin,this.valueSenha)
-    this.authService.SingIn(this.userLogin).then(sucess => this.sucessFunction).catch(error =>console.log(error))
-   }
+  signin() {
+    console.log(this.valueLogin, this.valueSenha)
+    this.authService.SingIn(this.userLogin).then(sucess => this.sucessFunction(sucess)).catch(error => console.log(error))
+  }
 
 }
 
@@ -93,46 +100,92 @@ export class LoginComponent {
   templateUrl: 'dialog-animations-example-dialog.html',
   styleUrl: 'login.component.css',
   standalone: true,
-  imports: [MatDialogTitle, MatDialogContent, MatDialogActions,MatDividerModule, MatDialogClose, MatButtonModule,MatTabsModule,MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatIconModule],
+  imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatDividerModule, MatDialogClose, MatButtonModule, MatTabsModule, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DialogAnimationsExampleDialog {
 
-  register:boolean = true
+  private _snackBar = inject(MatSnackBar);
 
-  errorStatus:number = 0
+  durationInSeconds = 5;
+
+  register: boolean = true
+
+  errorStatus: number = 0
+
+  valueNome: string = ''
+  valueSenha: string = ''
+  valueConfirmarSenha: string = ''
+  valueEmailRegister: string = ''
+  valueCpf: string = ''
+  valueCnpj: string = ''
+  contaLojista: string = ''
+
 
   readonly dialogRef = inject(MatDialogRef<DialogAnimationsExampleDialog>);
-    valueRegisterEmail = 'Seu Email...';
+  valueRegisterEmail = 'Seu Email...';
 
-    constructor(private authService:AuthService) { }
+  constructor(private authService: AuthService) { }
 
-  
-    body = {
-      email:'pedro@gmail.com',
-      password:'senha123',
-      account_type:"standard",
-      name:"John Doe",
-      registration:"123.000.000-00"
+
+  body = {
+    email: this.valueEmailRegister,
+    password: this.valueSenha,
+    account_type: "standard",
+    name: this.valueNome,
+    registration: this.valueCpf || this.valueCnpj
+  }
+
+
+  errorAlert(errorStatus: number) {
+    this.errorStatus = errorStatus
+    if (this.errorStatus == 400) {
+      window.alert('Usuário já cadastrado')
+    }
+  }
+
+
+  openSnackBar() {
+    this._snackBar.openFromComponent(PizzaPartyAnnotatedComponent, {
+      duration: this.durationInSeconds * 1000,
+    });
+  }
+
+  sendForm() {
+    if (this.valueConfirmarSenha != this.valueSenha) {
+      window.alert('Senhas divergentes')
+    } else if (!this.valueCnpj || !this.valueEmailRegister || !this.valueSenha) {
+      window.alert('Complete os campos')
+    } else {
+      this.authService.SingUp(this.body).then(sucess => this.openSnackBar()).catch(error => this.errorAlert(error.status))
     }
 
+  }
 
-    errorAlert(errorStatus:number){
-      this.errorStatus = errorStatus
-      if(this.errorStatus == 400){
-        window.alert('Usuário já cadastrado')
-      }
-    }
-  
-    sendForm(){
-      this.authService.SingUp(this.body).then(sucess => console.log(sucess)).catch(error => this.errorAlert(error.status))
-     }
-   
 }
 
-export class TabGroupBasicExample {}
+export class TabGroupBasicExample { }
 export class DialogElementsExampleDialog {
 
+}
+
+@Component({
+  selector: 'snack-bar-annotated-component-example-snack',
+  templateUrl: 'snack-bar.html',
+  styles: `
+    :host {
+      display: flex;
+    }
+
+    .example-pizza-party {
+      color: green;
+    }
+  `,
+  standalone: true,
+  imports: [MatButtonModule, MatSnackBarLabel, MatSnackBarActions, MatSnackBarAction],
+})
+export class PizzaPartyAnnotatedComponent {
+  snackBarRef = inject(MatSnackBarRef);
 }
 
 

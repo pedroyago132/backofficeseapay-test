@@ -52,6 +52,7 @@ a{
     font-weight: bold;
     font-size: 8px auto;
     font-family: 'inter-Light';
+    margin: 10px;
 }
 
 .contaienrLogin {
@@ -149,4 +150,5 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
   }

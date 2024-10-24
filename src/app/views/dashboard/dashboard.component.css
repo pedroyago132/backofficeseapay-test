@@ -10,10 +10,8 @@
 .backgroundBlue{
     width: 100%;
     height: 20%;
-    background-color:#3183d5;
+    background-color:#5d9cdb;
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
 }
 
 mat-tab{

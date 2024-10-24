@@ -1,39 +1,60 @@
 @if(register){
-  <a routerLink="/dashboard" routerLinkActive="active" ariaCurrentWhenActive="page" class="textModal">Abra sua conta no seaPay</a>
+<a routerLink="/dashboard" routerLinkActive="active" ariaCurrentWhenActive="page" class="textModal">Abra sua conta no
+  seaPay</a>
 }
-<mat-dialog-content >
+<mat-dialog-content>
   <mat-tab-group>
     <mat-tab label="Pessoa Física">
       <div class="containerRegister">
         <a class="titilesRegister">Email*</a>
-        <input class="inputRegister" placeholder="Digite seu email">
+        <input class="inputRegister" id="email" [(ngModel)]="valueEmailRegister" placeholder="Digite seu email">
 
         <a class="titilesRegister">Senha*</a>
-        <input placeholder="Sua senha..." class="inputRegister">
+        <input placeholder="Sua senha..." id="password" [(ngModel)]="valueSenha" class="inputRegister">
 
         <a class="titilesRegister">Confirmar Senha*</a>
-        <input placeholder="Confirme sua senha..." class="inputRegister">
+        <input placeholder="Confirme sua senha..." id="confirmarSenha" [(ngModel)]="valueConfirmarSenha"
+          class="inputRegister">
 
-        <span style="margin-top: 7px;"><input type="checkbox">Conta para lojista</span>
+        <span style="margin-top: 7px;"><input type="checkbox" id="lojista">Conta para lojista</span>
 
         <a class="textLower">*Contas para lojistas não são aptas a realizar transferências, apenas receber</a>
 
         <a class="titilesRegister">Nome Completo*</a>
-        <input class="inputRegister" placeholder="Seu nome">
+        <input class="inputRegister" id="nome" [(ngModel)]="valueNome" placeholder="Seu nome">
 
         <a class="titilesRegister">CPF*</a>
-        <input class="inputRegister" placeholder="XX.XXX.XXX-XX">
+        <input class="inputRegister" id="cpf" [(ngModel)]="valueCpf" placeholder="XX.XXX.XXX-XX">
       </div>
     </mat-tab>
-    <mat-tab label="Pessoa Jurídica"> Pessoa Jurídica </mat-tab>
+    <mat-tab label="Pessoa Jurídica">
+      <a class="titilesRegister">Email*</a>
+      <input class="inputRegister" id="email" [(ngModel)]="valueEmailRegister" placeholder="Digite seu email">
+
+      <a class="titilesRegister">Senha*</a>
+      <input placeholder="Sua senha..." id="password" [(ngModel)]="valueSenha" class="inputRegister">
+
+      <a class="titilesRegister">Confirmar Senha*</a>
+      <input placeholder="Confirme sua senha..." id="confirmarSenha" [(ngModel)]="valueConfirmarSenha"
+        class="inputRegister">
+
+      <span style="margin-top: 7px;"><input type="checkbox" id="lojista">Conta para lojista</span>
+
+      <a class="textLower">*Contas para lojistas não são aptas a realizar transferências, apenas receber</a>
+
+      <a class="titilesRegister">Razão Social*</a>
+      <input class="inputRegister" id="nome" [(ngModel)]="valueNome" placeholder="Seu CNPJ">
+
+      <a class="titilesRegister">CNPJ*</a>
+      <input class="inputRegister" id="cpf" [(ngModel)]="valueCnpj" placeholder="XX.XXX/XXXX-XX">
+    </mat-tab>
 
   </mat-tab-group>
 </mat-dialog-content>
-<mat-dialog-actions class="bottomContainerRegister" > 
- 
-<section >
-    <button  (click)="sendForm()"  mat-flat-button>Enviar</button>
-</section>
+<mat-dialog-actions class="bottomContainerRegister">
+
+  <section >
+    <button (click)="sendForm()" mat-flat-button>Enviar</button>
+  </section>
 
 </mat-dialog-actions>
-

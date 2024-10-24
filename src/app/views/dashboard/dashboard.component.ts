@@ -18,6 +18,7 @@ const ELEMENT_DATA: TableElement[] = [
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
+
 export class DashboardComponent {
   displayedColumns: string[] = ['tipo', 'status', 'nome', 'conta','valor','chave','data'];
   avancar1 = true
