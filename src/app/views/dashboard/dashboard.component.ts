@@ -24,7 +24,5 @@ export class DashboardComponent {
   avancar1 = true
   dataSource = ELEMENT_DATA;
 
-  continue(){
-    this.avancar1 = true
-  }
+
 }

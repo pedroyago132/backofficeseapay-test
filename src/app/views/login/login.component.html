@@ -2,13 +2,13 @@
     <mat-grid-tile>
         <div class="containerLogin">
 
-            <img ngSrc="Logo.png" width="220" height="83"><br>
+            <img ngSrc="Logo.png" width="130" height="100"><br>
 
-            <a>Acesse seu banco</a> <br>
+            <a>Acesse o site de Rodrigo Santos</a> <br>
             <a>Login</a><br>
 
             <mat-form-field class="example-form-field" >
-                <input matInput type="text" id="email" [(ngModel)]="valueLogin">
+                <input matInput type="text" id="email"  [(ngModel)]="valueLogin">
                 @if (valueLogin) {
                 <button matSuffix mat-icon-button aria-label="Clear" (click)="valueLogin=''">
                     <mat-icon>close</mat-icon>
@@ -38,5 +38,5 @@
     </div>
     
     </mat-grid-tile>
-    <mat-grid-tile><img ngSrc="Login.jpg" alt="image" fill> </mat-grid-tile>
+    <mat-grid-tile><img ngSrc="medical.png" alt="image" fill> </mat-grid-tile>
 </mat-grid-list>
